@@ -1,0 +1,56 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateUesrApplicationTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('uesr_application', function (Blueprint $table) {
+            $table->BigInteger();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('name');
+            $table->string('father_name');
+            $table->string('mother_name');
+            $table->string('phone_number');
+            $table->string('email');
+            $table->tinyInteger('gender');
+            $table->tinyInteger('religion');
+            $table->tinyInteger('marital_status');
+            $table->string('nationality');
+            $table->text('present_address');
+            $table->text('permanent_address');
+            $table->string('spouse_name');
+            $table->string('district');
+            $table->string('thana');
+            $table->date('date_of_birth');
+            $table->string('image');
+            $table->string('signature');
+            $table->tinyInteger('freedom_fighter');
+            $table->tinyInteger('whether_tribal');
+            $table->tinyInteger('is_handicapped');
+            $table->tinyInteger('live_in_orphanages');
+            $table->integer('created_by');
+            $table->integer('updated_by');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('uesr_application');
+    }
+}
